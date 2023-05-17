@@ -1,0 +1,387 @@
+﻿html, body {
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+}
+
+
+.wrapper {
+    display: grid;
+    /* Header and footer span the entire width, sidebars and content are fixed, with empty space on sides */
+    grid-template-areas: "header header header header header"
+                         "empty_left sidebar_1 content sidebar_2 empty_right"
+                         "footer footer footer footer footer";
+    /* Only expand middle section vertically (content and sidebars) */
+    grid-template-rows: 0fr 1fr 0fr;
+    /* 100% width, but static widths for content and sidebars */
+    grid-template-columns: 1fr 15% 70% 15% 1fr; /*1fr equals with nothing now*/
+}
+
+
+.header {
+    grid-area: header;
+    /* Stick header to top of grid */
+    position: relative;
+    top: 0;
+    /* Ensure header appears on top of content/sidebars */
+    z-index: 1;
+    /* General appearance */
+    text-align: center;
+    font-size: 2.5rem;
+    line-height: 1rem;
+    padding: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    background-image:linear-gradient( #000080, #0000ff, #8080ff);
+}
+
+.header .left-side,
+.header .right-side {
+    display: flex;
+}
+.little-space-header {
+    margin-right: 8rem;
+}
+/* Save header height to properly set `padding-top` and `margin-top` for sticky content */
+:root {
+    --header-height: calc(1rem * 1.5 + 1rem * 2);
+}
+
+.header-img {
+    border: 3px solid #000000;
+    border-radius: 18px;
+    width: 150px;
+    position:sticky;
+    object-fit:cover;
+}
+
+.header-h1 {
+    /* position: absolute; */
+    color: white;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px black;
+    margin-left: 20px;
+    margin-top: 2.5rem;
+}
+
+.header-a:link {
+    float:right;
+    position: relative;
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    top: 2.75rem;
+    margin-left: 3rem;
+}
+.header-a:visited {
+    color: white;
+}
+.header-a:hover {
+    text-shadow: 1px 1px black;
+    color: #ffe6cc;
+    text-decoration:underline;
+}
+.header-a:active {
+    text-shadow: 1px 1px black;
+    color: #ffbb33;
+    text-decoration: underline;
+}
+
+
+.sidebar-1,
+.sidebar-2 {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 0;
+    /* Styling to match reference */
+    background-image: url('../img/side.png');
+}
+
+.sidebar-1 {
+    grid-area: sidebar_1;
+}
+
+.sidebar-2 {
+    grid-area: sidebar_2;
+}
+
+.content {
+    grid-area: content;
+    /* General appearance */
+    background-color: #C0C0C0;
+    color: black;
+}
+
+.content p{
+    color:black;
+}
+
+.sticky-content {
+    position: sticky;
+    top:0;
+    min-height: calc(100vh - var(--footer-height));
+    box-sizing: border-box;
+    /*padding*/
+    --padding: 10px;
+    padding: calc(var(--header-height) + var(--padding)) var(--padding) var(--padding);
+    margin-top: calc(0px - var(--header-height));
+}
+
+
+footer {
+    grid-area: footer;
+    /* Stick footer to bottom of grid */
+    position: relative;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    /* General appearance */
+    background-color: #333333;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: Arial;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 1rem;
+}
+/* Save footer height to properly set `bottom` and `min-height` for sticky content */
+:root {
+    --footer-height: calc(.8rem * 1.5 + .5rem * 2);
+}
+
+
+footer p {
+    position: sticky;
+    padding: 0.5rem;
+    text-align: center;
+    color: #b3b3b3;
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+footer hr {
+    border: 0;
+    height: 0.13rem;
+    background: #ffcc99;
+    margin-left: 12%;
+    margin-right: 12%;
+    margin-bottom: 1rem;
+}
+
+.little-space-footer {
+    margin-left: 12%;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+footer a:link {
+    color: #d9d9d9;
+    font-size: 1rem;
+    text-decoration: none;
+    margin-left: 2.5rem;
+    padding: 1rem;
+    text-align: left;
+}
+
+footer a:visited {
+    color: #d9d9d9;
+}
+
+footer a:hover {
+    color: #d9d9d9;
+    text-decoration:underline;
+}
+
+footer a:active {
+    color: #0066ff;
+    text-decoration: underline;
+}
+
+
+.content a:link {
+    text-decoration: none;
+    font-style: italic;
+    color: blue;
+}
+.content a:visited {
+    color: blue;
+}
+.content a:hover{
+    color:olivedrab;
+}
+.content a:active{
+    color: red;
+}
+
+.content p{
+    font-size:1.2rem;
+    padding:1rem;
+}
+
+.content-list {
+    border: 0.1rem;
+    color: black;
+    background-image: url("../img/old_paper.jpg");
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+ol {
+    word-break: break-all;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style-type:disc;
+    word-break: break-all;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin-left: calc(100% / 2 - 3rem);
+    list-style-position: inside;
+    padding: 0.3rem;
+}
+
+.content-list-space {
+    margin-left:2rem;
+}
+
+#link-box {
+    position: absolute;
+    right: 0;
+    width: 200px;
+    background: white;
+    border: 1px solid #444;
+    padding: 1rem 0;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 10%;
+}
+
+.lang-button {
+    position: relative;
+    background:none;
+    border: hidden;
+    padding: 0 0;
+    text-decoration: none;
+    margin: 0 0;
+    cursor: pointer;
+    margin-right: 6rem;
+    outline: none;
+}
+
+.lang-img {
+    width: 40px;
+    height: 40%;
+    display: flex;
+}
+
+.simle-button {
+    display: inline-block;
+    border-radius: 0.25rem;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 1.75rem;
+    padding: 1.25rem;
+    width: 20rem;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-left: 21.5rem;
+    outline: none;
+}
+
+    .simle-button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+        .simle-button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -1.25rem;
+            transition: 0.5s;
+        }
+
+    .simle-button:hover span {
+        padding-right: 1.5rem;
+    }
+
+        .simle-button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+
+.lang-link {
+    display: block;
+    margin-bottom: 1rem;
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+
+#table {
+    display:none;
+}
+
+table {
+    border-radius: 1%;
+    /* border-width: thick; */
+    border-color: blue;
+    /*edit the data of table here*/
+}
+
+.timg
+{
+    width:19rem;
+    height:19rem;
+}
+
+td {
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+.contactForm {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
